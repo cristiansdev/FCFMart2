@@ -26,7 +26,7 @@ export class RegistroVendedorPage implements OnInit {
 
   ngOnInit() {}
 
-  async login() {
+  async registro() {
     if (this.formLogin.valid) {
       const { email, password } = this.formLogin.getRawValue();
       if (email != null && password != null) {

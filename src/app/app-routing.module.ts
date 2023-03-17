@@ -2,37 +2,51 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login-vendedor']);
+const redirectUnauthorizedToLogin = () =>
+  redirectUnauthorizedTo(['/login-vendedor']);
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'pruebas',
-    loadChildren: () => import('./pruebas/pruebas.module').then( m => m.PruebasPageModule)
+    loadChildren: () =>
+      import('./pruebas/pruebas.module').then((m) => m.PruebasPageModule),
   },
   {
     path: 'registro-vendedor',
-    loadChildren: () => import('./registro-vendedor/registro-vendedor.module').then( m => m.RegistroVendedorPageModule)
+    loadChildren: () =>
+      import('./registro-vendedor/registro-vendedor.module').then(
+        (m) => m.RegistroVendedorPageModule
+      ),
   },
   {
     path: 'login-vendedor',
-    loadChildren: () => import('./login-vendedor/login-vendedor.module').then( m => m.LoginVendedorPageModule)
+    loadChildren: () =>
+      import('./login-vendedor/login-vendedor.module').then(
+        (m) => m.LoginVendedorPageModule
+      ),
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () =>
+      import('./inicio/inicio.module').then((m) => m.InicioPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
-
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
