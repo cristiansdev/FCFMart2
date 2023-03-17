@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import User from 'src/interfaces/User';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import User from 'src/interfaces/User';
 import { FCFMServiceService } from '../services/fcfmservice.service';
+
 @Component({
-  selector: 'app-registro-vendedor',
-  templateUrl: './registro-vendedor.page.html',
-  styleUrls: ['./registro-vendedor.page.scss'],
+  selector: 'app-login-vendedor',
+  templateUrl: './login-vendedor.page.html',
+  styleUrls: ['./login-vendedor.page.scss'],
 })
-export class RegistroVendedorPage implements OnInit {
+export class LoginVendedorPage implements OnInit {
   private user: User = {
     email: '',
     password: '',
@@ -20,23 +21,22 @@ export class RegistroVendedorPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private FCFMService: FCFMServiceService,
+    private fcfmService: FCFMServiceService,
     private router: Router
   ) {}
 
   ngOnInit() {}
 
-  async login() {
+  async inicioSesion() {
     if (this.formLogin.valid) {
       const { email, password } = this.formLogin.getRawValue();
       if (email != null && password != null) {
         this.user.email = email;
         this.user.password = password;
-        await this.FCFMService.register(this.user)
+        await this.fcfmService.login(this.user)
           .then((response) => {
-            console.log('Logeado');
             console.log(response);
-            this.router.navigate(['/login-vendedor']);
+            this.router.navigate(['/home']);
           })
           .catch((error) => console.log(error));
       }

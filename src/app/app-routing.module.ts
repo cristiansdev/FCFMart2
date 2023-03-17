@@ -14,9 +14,14 @@ const routes: Routes = [
   {
     path: 'pruebas',
     loadChildren: () => import('./pruebas/pruebas.module').then( m => m.PruebasPageModule)
-  },  {
+  },
+  {
     path: 'registro-vendedor',
     loadChildren: () => import('./registro-vendedor/registro-vendedor.module').then( m => m.RegistroVendedorPageModule)
+  },
+  {
+    path: 'login-vendedor',
+    loadChildren: () => import('./login-vendedor/login-vendedor.module').then( m => m.LoginVendedorPageModule)
   },
 
 ];
