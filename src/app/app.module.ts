@@ -11,11 +11,14 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth} from '@angular/fire/auth';
 
 import { provideFirestore, getFirestore} from '@angular/fire/firestore';
+import { HomeVendedorPipe } from './home-vendedor.pipe';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeVendedorPipe],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
