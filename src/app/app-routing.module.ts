@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -38,6 +38,13 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () =>
       import('./inicio/inicio.module').then((m) => m.InicioPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: 'info-user',
+    loadChildren: () =>
+      import('./info-user/info-user.module').then((m) => m.InfoUserPageModule),
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
