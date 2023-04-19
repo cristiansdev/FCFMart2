@@ -36,7 +36,7 @@ export class LoginVendedorPage implements OnInit {
         await this.fcfmService.login(this.user)
           .then((response) => {
             console.log(response);
-            this.router.navigate(['/home']);
+            this.router.navigate(['/inicio']);
           })
           .catch((error) => console.log(error));
       }

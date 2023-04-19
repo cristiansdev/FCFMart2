@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FCFMServiceService } from '../services/fcfmservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+  constructor(
+    private fcfmService: FCFMServiceService,
+    private router: Router
+  ) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  async logout() {
+    await this.fcfmService.logout();
+    this.router.navigate(['/login-vendedor'])
   }
-
 }
