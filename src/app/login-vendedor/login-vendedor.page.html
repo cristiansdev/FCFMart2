@@ -1,23 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login Vendedor</ion-title>
+    <ion-title>Iniciar Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 <form [formGroup]="formLogin" (ngSubmit)="inicioSesion()">
   <ion-list>
     <ion-item>
-      <ion-label position="stacked">Introduce correo electrónico</ion-label>
-      <ion-input [clearOnEdit]="true"  formControlName="email" placeholder="Correo electrónico"></ion-input>
+      <ion-label position="stacked">Correo electrónico</ion-label>
+      <ion-input [clearOnEdit]="true"  formControlName="email" placeholder="Ingrese su correo electrónico"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Introduce contraseña</ion-label>
-      <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Ingrese su contraseña"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-button type="submit">Registrarse</ion-button>
-  
+  <ion-button type="submit">Ingresar</ion-button>
+  <br><br>
+    <ion-label position="stacked">¿Aún no tienes cuenta? <a routerLink="/registro-vendedor"> ¡Regístrate aquí! </a> </ion-label>
+
 </form>
-
-
 </ion-content>

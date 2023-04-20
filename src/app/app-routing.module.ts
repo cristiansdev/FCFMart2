@@ -47,10 +47,15 @@ const routes: Routes = [
       import('./info-user/info-user.module').then((m) => m.InfoUserPageModule),
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },  {
+  },
+  {
     path: 'home-vendedor',
     loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule)
+  },  {
+    path: 'inicio-negocios',
+    loadChildren: () => import('./inicio-negocios/inicio-negocios.module').then( m => m.InicioNegociosPageModule)
   },
+
 
 ];
 
