@@ -47,9 +47,18 @@ const routes: Routes = [
       import('./info-user/info-user.module').then((m) => m.InfoUserPageModule),
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },  {
+  },
+  {
     path: 'home-vendedor',
     loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule)
+  },
+  {
+    path: 'alta-productos',
+    loadChildren: () => import('./alta-productos/alta-productos.module').then( m => m.AltaProductosPageModule)
+  },
+  {
+    path: 'modificacion-productos',
+    loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
   },
 
 ];

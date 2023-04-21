@@ -13,6 +13,7 @@ import { provideAuth, getAuth} from '@angular/fire/auth';
 import { provideFirestore, getFirestore} from '@angular/fire/firestore';
 import { HomeVendedorPipe } from './home-vendedor.pipe';
 import { ComponentsModule } from './components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeVendedorPipe],
@@ -24,6 +25,7 @@ import { ComponentsModule } from './components/components.module';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    ReactiveFormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
