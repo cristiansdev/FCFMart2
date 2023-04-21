@@ -6,16 +6,15 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { BuscadorComponent } from './buscador/buscador.component';
 import { NegocioComponent } from './negocio/negocio.component';
-import { VendedoresNegociosComponent } from './vendedores-negocios/vendedores-negocios.component';
 
 @NgModule({
-  declarations: [BuscadorComponent, NegocioComponent, VendedoresNegociosComponent, NegocioComponent],
+  declarations: [BuscadorComponent, NegocioComponent, NegocioComponent],
   imports: [
     IonicModule.forRoot()
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   exports: [
-    BuscadorComponent, NegocioComponent, VendedoresNegociosComponent
+    BuscadorComponent, NegocioComponent
   ]
 })
 export class ComponentsModule {}
