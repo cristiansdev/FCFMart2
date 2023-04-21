@@ -7,10 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { PruebasPageRoutingModule } from './pruebas-routing.module';
 
 import { PruebasPage } from './pruebas.page';
+import { BuscadorComponent } from '../components/buscador/buscador.component';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
     PruebasPageRoutingModule
