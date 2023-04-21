@@ -51,7 +51,8 @@ const routes: Routes = [
   {
     path: 'home-vendedor',
     loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule)
-  },  {
+  },
+  {
     path: 'inicio-negocios',
     loadChildren: () => import('./inicio-negocios/inicio-negocios.module').then( m => m.InicioNegociosPageModule)
   },
@@ -60,6 +61,14 @@ const routes: Routes = [
     loadChildren: () => import('./vendedores-negocios/vendedores-negocios.module').then( m => m.VendedoresNegociosPageModule)
   },
 
+  {
+    path: 'alta-productos',
+    loadChildren: () => import('./alta-productos/alta-productos.module').then( m => m.AltaProductosPageModule)
+  },
+  {
+    path: 'modificacion-productos',
+    loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
+  },
 
 ];
 

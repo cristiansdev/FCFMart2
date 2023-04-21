@@ -8,10 +8,12 @@ import { InicioNegociosPageRoutingModule } from './inicio-negocios-routing.modul
 
 import { InicioNegociosPage } from './inicio-negocios.page';  
 import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     ComponentsModule,
     FormsModule,
     IonicModule,
