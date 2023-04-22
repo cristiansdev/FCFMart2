@@ -48,7 +48,19 @@ const routes: Routes = [
   {
     path: 'home-vendedor',
     loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule)
+  },  {
+    path: 'alta-productos',
+    loadChildren: () => import('./alta-productos/alta-productos.module').then( m => m.AltaProductosPageModule)
   },
+  {
+    path: 'inicio-negocios',
+    loadChildren: () => import('./inicio-negocios/inicio-negocios.module').then( m => m.InicioNegociosPageModule)
+  },
+  {
+    path: 'modificacion-productos',
+    loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
+  },
+
 
 ];
 
