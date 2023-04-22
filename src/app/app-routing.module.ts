@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import {AuthGuard } from "./auth.guard"
 
 
@@ -43,14 +42,18 @@ const routes: Routes = [
   {
     path: 'info-user',
     loadChildren: () =>
-      import('./info-user/info-user.module').then((m) => m.InfoUserPageModule)
+      import('./info-user/info-user.module').then((m) => m.InfoUserPageModule),
+      canActivate: [AuthGuard]
   },
   {
     path: 'home-vendedor',
-    loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule)
-  },  {
+    loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'alta-productos',
-    loadChildren: () => import('./alta-productos/alta-productos.module').then( m => m.AltaProductosPageModule)
+    loadChildren: () => import('./alta-productos/alta-productos.module').then( m => m.AltaProductosPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'inicio-negocios',
@@ -58,7 +61,8 @@ const routes: Routes = [
   },
   {
     path: 'modificacion-productos',
-    loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
+    loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule),
+    canActivate: [AuthGuard]
   },
 
 
