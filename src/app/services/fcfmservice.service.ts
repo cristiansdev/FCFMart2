@@ -38,6 +38,7 @@ export class FCFMServiceService {
   //   return addDoc(userRef, user);
   // }
 
+  
   register(user: User) {
     return createUserWithEmailAndPassword(this.auth, user.email, user.password);
   }
