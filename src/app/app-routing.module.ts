@@ -60,7 +60,7 @@ const routes: Routes = [
     loadChildren: () => import('./inicio-negocios/inicio-negocios.module').then( m => m.InicioNegociosPageModule)
   },
   {
-    path: 'modificacion-productos',
+    path: 'modificacion-productos/:id',
     loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule),
     canActivate: [AuthGuard]
   },

@@ -38,7 +38,8 @@
         <ion-card-content>
           {{producto.descripcion}}
         </ion-card-content>
-        
+        <ion-button (click)="eliminarProducto(producto)">Borrar</ion-button>
+        <ion-button [routerLink]="['/modificacion-productos/',producto.id]">Editar</ion-button>
       </ion-card>
     </ion-content>
   </div>
