@@ -16,12 +16,14 @@ export class AltaProductosPage implements OnInit {
     horas: '',
     descripcion: ''
   };
-
+  idVendedor:string;
   constructor(
     private formBuilder: FormBuilder,
     private FCFMService: FCFMServiceService,
     private router: Router
-  ) {}
+  ) {
+    this.idVendedor = FCFMService.getUserId()
+  }
 
   formAgregar = this.formBuilder.group({
     nombreP: ['', [Validators.required]],
@@ -38,6 +40,7 @@ export class AltaProductosPage implements OnInit {
       this.producto.precio = precio;
       this.producto.horas = horas;
       this.producto.descripcion = descripcion;
+      this.producto.idVendedor = localStorage.getItem('idUser')
       await this.FCFMService.altaProducto(this.producto)
         .then((response) => {
           console.log('Logeado');

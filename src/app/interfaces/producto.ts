@@ -4,4 +4,5 @@ export interface Producto {
     precio:string;
     horas:string;
     descripcion:string;
+    idVendedor?:string | null;
 }

@@ -27,21 +27,30 @@ export class LoginVendedorPage implements OnInit {
 
   ngOnInit() {}
 
-  async inicioSesion() {
+  inicioSesion() {
     if (this.formLogin.valid) {
       const { email, password } = this.formLogin.getRawValue();
       if (email != null && password != null) {
         this.user.email = email;
         this.user.password = password;
-        await this.fcfmService.login(this.user)
-          .then((response) => {
-            console.log(response);
+        this.fcfmService
+          .login(this.user)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            // Obtener el ID del usuario
+            const userId = user.uid;
+            this.fcfmService.setUserId(userId)
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('idUser', this.fcfmService.getUserId())
             this.router.navigate(['/inicio']);
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.log('Error: ' + error.message));
       }
     } else {
       this.formLogin.markAllAsTouched();
     }
+    this.fcfmService.getLoggedInSubject().subscribe((status: boolean) => {
+      console.log(status);
+    });
   }
 }

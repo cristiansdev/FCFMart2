@@ -21,14 +21,18 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService.tieneSesion()) {
+    if (localStorage.getItem('isLoggedIn')=== 'true') {
+      console.log(localStorage.getItem('isLoggedIn')  )
       return true;
     } else {
+      console.log(localStorage.getItem('isLoggedIn'))
       console.log('Acceso denegado');
       this.router.navigate(['/login-vendedor']);
       return false;
     }
   }
+
+
 
   constructor(
     private authService: FCFMServiceService,
