@@ -64,7 +64,11 @@ const routes: Routes = [
   {
     path: 'modificacion-productos',
     loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
+  },  {
+    path: 'productos',
+    loadChildren: () => import('./productos/productos.module').then( m => m.ProductosPageModule)
   },
+
 
 ];
 
