@@ -66,7 +66,11 @@ const routes: Routes = [
     path: 'modificacion-productos/:id',
     loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule),
     canActivate: []
+  },  {
+    path: 'productos',
+    loadChildren: () => import('./productos/productos.module').then( m => m.ProductosPageModule)
   },
+
 
 
 ];

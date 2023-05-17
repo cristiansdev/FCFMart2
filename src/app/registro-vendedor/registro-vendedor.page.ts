@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import User from 'src/interfaces/User';
 import { Router } from '@angular/router';
 import { FCFMServiceService } from '../services/fcfmservice.service';
+import { ProductoService } from '../services/producto.service';
+import { Producto } from '../producto';
 @Component({
   selector: 'app-registro-vendedor',
   templateUrl: './registro-vendedor.page.html',
@@ -21,7 +23,8 @@ export class RegistroVendedorPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private FCFMService: FCFMServiceService,
-    private router: Router
+    private router: Router,
+    private productoService: ProductoService
   ) {}
 
   ngOnInit() {}
@@ -34,6 +37,13 @@ export class RegistroVendedorPage implements OnInit {
         this.user.password = password;
         await this.FCFMService.register(this.user)
           .then((response) => {
+            let p:Producto = {
+              nombre: 'prueba',
+              descripcion: 'prueba',
+              horas: 'prueba',
+              precio:'prueba'
+            }
+            this.FCFMService.altaProducto(p);
             console.log('Logeado');
             console.log(response);
             this.router.navigate(['/login-vendedor']);
