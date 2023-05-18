@@ -1,0 +1,39 @@
+ion-content {
+    padding: 20px;
+  }
+  
+  ion-label {
+    font-weight: bold;
+  }
+  
+  ion-input {
+    margin-bottom: 10px;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  
+  form {
+    width: 500px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  ion-list {
+    margin-bottom: 20px;
+  }
+  
+  .custom-button {
+    width: 100%;
+  }
+  
