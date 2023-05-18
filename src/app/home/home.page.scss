@@ -1,6 +1,9 @@
 #container {
   text-align: center;
-
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   position: absolute;
   left: 0;
   right: 0;
@@ -24,4 +27,30 @@
 
 #container a {
   text-decoration: none;
+}
+
+img{
+  height: 70%;
+  position: center;
+  padding-left: 20%;
+}
+
+#page-header h1{
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+#button-container h4{
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+}
+
+#button-container{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 250px;
+  font-weight: bold;
 }
