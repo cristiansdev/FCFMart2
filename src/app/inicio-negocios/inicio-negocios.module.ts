@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { InicioNegociosPageRoutingModule } from './inicio-negocios-routing.module';
 
-import { InicioNegociosPage } from './inicio-negocios.page';
+import { InicioNegociosPage } from './inicio-negocios.page';  
 import { ComponentsModule } from '../components/components.module';
 
 @NgModule({

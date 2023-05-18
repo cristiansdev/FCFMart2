@@ -8,7 +8,7 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { NegocioComponent } from './negocio/negocio.component';
 
 @NgModule({
-  declarations: [BuscadorComponent, NegocioComponent],
+  declarations: [BuscadorComponent, NegocioComponent, NegocioComponent],
   imports: [
     IonicModule.forRoot()
   ],
