@@ -49,7 +49,7 @@ export class FCFMServiceService {
     this.idUser = 'nada'
   }
 
-
+  
 
 
   setUserId(userId: string) {
