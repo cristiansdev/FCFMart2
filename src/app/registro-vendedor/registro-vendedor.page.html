@@ -1,20 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-<form [formGroup]="formLogin" (ngSubmit)="registro()">
-  <ion-list>
-    <ion-item>
-      <ion-label position="stacked">Correo electrónico</ion-label>
-      <ion-input [clearOnEdit]="true"  formControlName="email" placeholder="Ingrese su correo electrónico"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input type="password" formControlName="password" placeholder="Ingrese su contraseña"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button type="submit">Registrarse</ion-button>
-</form>
+  <div class="container">
+    <form [formGroup]="formLogin" (ngSubmit)="registro()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input [clearOnEdit]="true"  formControlName="nombre" placeholder="Ingrese su nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Correo electrónico</ion-label>
+          <ion-input [clearOnEdit]="true"  formControlName="email" placeholder="Ingrese su correo electrónico"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Slogan de Vendedor</ion-label>
+          <ion-input [clearOnEdit]="true"  formControlName="slogan" placeholder="Ingrese un slogan como vendeor"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Descrión de lo que vende</ion-label>
+          <ion-input [clearOnEdit]="true"  formControlName="descripcion" placeholder="Ingrese descripcion de las cosas que vende"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button type="submit" class="custom-button">Registrarse</ion-button>
+    </form>
+</div>
 </ion-content>

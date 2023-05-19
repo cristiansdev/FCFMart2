@@ -1,0 +1,8 @@
+.btn-negocio{
+    --background: none;
+    color: rgb(255, 77, 151);
+}
+
+.btn-negocio::after{
+    box-shadow: none;
+}

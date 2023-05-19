@@ -22,6 +22,7 @@ import {
 } from 'firebase/auth';
 import { Producto } from '../producto';
 import { Observable, Subject } from 'rxjs';
+import { Vendedor } from '../interfaces/vendedor';
 // import { Producto } from '../interfaces/producto';
 const firebaseApp = initializeApp(environment.firebaseConfig);
 const dbCloudFirestore = getFirestore(firebaseApp);
@@ -35,16 +36,6 @@ export class FCFMServiceService {
   private idUser:string;
   db = dbCloudFirestore;
   private loggedInSubject: Subject<boolean> = new Subject<boolean>();
-
-  // constructor() {
-  //   this.auth = getAuth(firebaseApp);
-  //   onAuthStateChanged(this.auth, user =>{
-  //     if(user != undefined || user != null){
-  //       this.isLoged = true;
-  //       this.logeado = true
-  //     }
-  //   });
-  // }
   constructor(private auth: Auth) {
     this.idUser = 'nada'
   }
@@ -84,6 +75,11 @@ export class FCFMServiceService {
 
   register({ email, password }: User) {
     return createUserWithEmailAndPassword(this.auth, email, password);
+  }
+
+  async altaVendedor(vendedor: Vendedor) {
+    const docRef = await addDoc(collection(this.db, 'vendedor'), vendedor);
+    console.log('Documento escrito con id: ' + docRef.id);
   }
 
    login({ email, password }: User){

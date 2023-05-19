@@ -30,9 +30,9 @@
 }
 
 img{
-  height: 70%;
-  position: center;
-  padding-left: 20%;
+  height:75%;
+  margin: auto;
+  clip-path: circle();
 }
 
 #page-header h1{
@@ -48,7 +48,7 @@ img{
 }
 
 #button-container{
-  width: 70%;
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 250px;
