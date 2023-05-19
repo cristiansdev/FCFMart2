@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>FCFMart (logo)</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home-vendedor">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-  <ion-button routerLink="/home-vendedor">
-    <ion-icon slot="icon-only" name="search"></ion-icon>
-  </ion-button>
 </ion-header>
 
 <ion-content>
-  <app-negocio>
+  <app-negocio routerLink="/productos">
   
   </app-negocio>
-  <app-negocio>
+  <app-negocio routerLink="/productos">
   
   </app-negocio>
   
