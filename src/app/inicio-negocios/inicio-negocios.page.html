@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let vendedor of vendedores">
+  <ion-card *ngFor="let vendedor of vendedores" [routerLink]="['/productos/',vendedor.id]">
     <ion-card-header>
       <ion-card-title><ion-button fill="clear" class="btn-negocio">{{vendedor.nombre}}</ion-button></ion-card-title>
       <ion-card-subtitle>Slogan: {{vendedor.slogan}}</ion-card-subtitle>

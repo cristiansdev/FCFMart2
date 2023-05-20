@@ -3,22 +3,22 @@
     <ion-col>
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Nombre del negocio</ion-card-title>
-          <ion-card-subtitle>Productos en venta</ion-card-subtitle>
+          <ion-card-title>{{vendedor.nombre}}</ion-card-title>
+          <ion-card-subtitle>{{vendedor.desripcion}}</ion-card-subtitle>
         </ion-card-header>
       </ion-card>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-card>
+      <ion-card *ngFor="let producto of productos">
         <ion-card-header>
-          <ion-card-title>Nombre producto</ion-card-title>
-          <ion-card-subtitle>Precio</ion-card-subtitle>
+          <ion-card-title>{{producto.nombre}}</ion-card-title>
+          <ion-card-subtitle>{{producto.precio}}</ion-card-subtitle>
         </ion-card-header>
       
         <ion-card-content>
-          Descripcion
+          {{producto.descripcion}}
         </ion-card-content>
       </ion-card>
       </ion-col>

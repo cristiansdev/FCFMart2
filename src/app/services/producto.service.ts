@@ -37,5 +37,8 @@ export class ProductoService {
       Vendedor[]
     >;
   }
-
+  getVendedor(id: string): Observable<any> {
+    const vendedorDocRef = doc(this.firestore, `vendedor/${id}`);
+    return docData(vendedorDocRef, { idField: 'id' });
+  }
 }
