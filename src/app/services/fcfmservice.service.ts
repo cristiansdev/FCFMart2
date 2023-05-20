@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import User from 'src/interfaces/User';
+import { collectionData} from '@angular/fire/firestore';
 import {
   CollectionReference,
   DocumentData,
@@ -9,7 +10,7 @@ import {
   addDoc,
   collection,
   getDocs,
-  getFirestore,
+  getFirestore
 } from 'firebase/firestore';
 import { Auth } from '@angular/fire/auth';
 import { collection as collec } from 'firebase/firestore';
@@ -36,7 +37,7 @@ export class FCFMServiceService {
   private idUser:string;
   db = dbCloudFirestore;
   private loggedInSubject: Subject<boolean> = new Subject<boolean>();
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private firestore:Firestore) {
     this.idUser = 'nada'
   }
 
@@ -107,7 +108,13 @@ export class FCFMServiceService {
         });
       })
       .catch((error) => {
-        console.log('Ocurrio un erro en el guardardo:' + error);
+        console.log('Ocurrio un error en el guardardo:' + error);
       });
+  }
+  getVendedor(): Observable<Vendedor[]>{
+    const vendedorRef = collection(this.firestore, 'vendedor');
+    return collectionData(vendedorRef, {idField:'id'}) as Observable<
+      Vendedor[]
+    >;
   }
 }

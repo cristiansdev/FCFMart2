@@ -28,4 +28,9 @@
   
   </app-negocio>
   <app-negocio></app-negocio>
+  <ion-card *ngFor="let vendedor of vendedores">
+      <ion-card-title>{{vendedor.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{vendedor.slogan}}</ion-card-subtitle>
+      <ion-card-subtitle>{{vendedor.desripcion}}</ion-card-subtitle>
+  </ion-card>
 </ion-content>

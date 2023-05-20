@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FCFMServiceService } from '../services/fcfmservice.service';
+import { Vendedor } from '../interfaces/vendedor';
 
 @Component({
   selector: 'app-inicio-negocios',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio-negocios.page.scss'],
 })
 export class InicioNegociosPage implements OnInit {
-
-  constructor() { }
+  vendedores: Vendedor[]  = [];
+  constructor(private fcfmservice: FCFMServiceService) { }
 
   ngOnInit() {
+    // this.fcfmservice.getVendedor().subscribe(vendedores=>{
+    //   this.vendedores = vendedores;
+    // })
   }
 
 }
