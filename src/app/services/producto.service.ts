@@ -3,6 +3,7 @@ import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
 import { Producto } from '../interfaces/producto';
+import { Vendedor } from '../interfaces/vendedor';
 
 @Injectable({
   providedIn: 'root',
@@ -30,4 +31,11 @@ export class ProductoService {
     const productoDocRef = doc(this.firestore, `producto/${id}`);
     return docData(productoDocRef, { idField: 'id' });
   }
+  getVendedores(): Observable<Vendedor[]>{
+    const vendedorRef = collection(this.firestore, 'vendedor');
+    return collectionData(vendedorRef, {idField:'id'}) as Observable<
+      Vendedor[]
+    >;
+  }
+
 }

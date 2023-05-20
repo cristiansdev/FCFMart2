@@ -37,7 +37,7 @@ export class FCFMServiceService {
   private idUser:string;
   db = dbCloudFirestore;
   private loggedInSubject: Subject<boolean> = new Subject<boolean>();
-  constructor(private auth: Auth, private firestore:Firestore) {
+  constructor(private auth: Auth) {
     this.idUser = 'nada'
   }
 
@@ -111,10 +111,5 @@ export class FCFMServiceService {
         console.log('Ocurrio un error en el guardardo:' + error);
       });
   }
-  getVendedor(): Observable<Vendedor[]>{
-    const vendedorRef = collection(this.firestore, 'vendedor');
-    return collectionData(vendedorRef, {idField:'id'}) as Observable<
-      Vendedor[]
-    >;
-  }
+
 }

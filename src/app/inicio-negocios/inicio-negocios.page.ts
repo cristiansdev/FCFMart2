@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FCFMServiceService } from '../services/fcfmservice.service';
+import { ProductoService } from '../services/producto.service';
 import { Vendedor } from '../interfaces/vendedor';
 
 @Component({
@@ -9,12 +9,12 @@ import { Vendedor } from '../interfaces/vendedor';
 })
 export class InicioNegociosPage implements OnInit {
   vendedores: Vendedor[]  = [];
-  constructor(private fcfmservice: FCFMServiceService) { }
+  constructor(private product: ProductoService) { }
 
   ngOnInit() {
-    // this.fcfmservice.getVendedor().subscribe(vendedores=>{
-    //   this.vendedores = vendedores;
-    // })
+    this.product.getVendedores().subscribe(vendedor=>{
+      this.vendedores = vendedor;
+    })
   }
 
 }

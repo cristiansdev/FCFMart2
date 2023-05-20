@@ -68,7 +68,7 @@ const routes: Routes = [
     canActivate: []
   },
   {
-    path: 'productos/:id',
+    path: 'productos',
     loadChildren: () => import('./productos/productos.module').then( m => m.ProductosPageModule)
   }
 
