@@ -1,2 +1,21 @@
+<ion-header>
+    
+<ion-searchbar animated="true"  (change)="filtrar()" [(ngModel)]="nombreProducto" color="dark" placeholder="Encuentra tu comida favorita" >
 
-<ion-searchbar animated="true" color="dark" placeholder="Encuentra tu comida favorita"></ion-searchbar>
+</ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card *ngFor= "let productofilt of productosfilt" >
+        <ion-card-header>
+          <ion-card-title>{{productofilt.nombre}}</ion-card-title>
+          <ion-card-subtitle>{{productofilt.precio}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            {{productofilt.descripcion}}
+        </ion-card-content>
+      </ion-card>
+</ion-content>
+

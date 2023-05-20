@@ -13,7 +13,6 @@ import { ComponentsModule } from '../components/components.module';
   imports: [
     CommonModule,
     ComponentsModule,
-    FormsModule,
     IonicModule,
     InicioNegociosPageRoutingModule
   ],
