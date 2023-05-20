@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
+ import { initializeApp } from 'firebase/app';
+//import { initializeApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import User from 'src/interfaces/User';
 import { collectionData} from '@angular/fire/firestore';
 import {
-  CollectionReference,
-  DocumentData,
-  Firestore,
   addDoc,
   collection,
-  getDocs,
-  getFirestore
+  getDocs,setDoc,  doc,  getFirestore
 } from 'firebase/firestore';
 import { Auth } from '@angular/fire/auth';
 import { collection as collec } from 'firebase/firestore';
@@ -78,9 +75,23 @@ export class FCFMServiceService {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
+  // async altaVendedor(vendedor: Vendedor) {
+  //   const docRef = await addDoc(collection(this.db, 'vendedor'), vendedor);
+  //   console.log('Documento escrito con id: ' + docRef.id);
+  // }
   async altaVendedor(vendedor: Vendedor) {
-    const docRef = await addDoc(collection(this.db, 'vendedor'), vendedor);
-    console.log('Documento escrito con id: ' + docRef.id);
+    const db = getFirestore(initializeApp(environment.firebaseConfig));
+    if(vendedor.id ==null){
+      vendedor.id = 'idsdf'
+    }
+    await setDoc(doc(db, 'vendedor',vendedor.id),{
+        nombre: vendedor.nombre,
+        password: vendedor.password,
+        correo: vendedor.correo,
+        slogan: vendedor.slogan,
+        desripcion: vendedor.desripcion
+        
+    });
   }
 
    login({ email, password }: User){

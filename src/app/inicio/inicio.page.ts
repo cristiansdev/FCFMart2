@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Producto } from '../interfaces/producto';
 import { ProductoService } from '../services/producto.service';
 import { Observable } from 'rxjs';
+import { Vendedor } from '../interfaces/vendedor';
 
 @Component({
   selector: 'app-inicio',
@@ -11,32 +12,49 @@ import { Observable } from 'rxjs';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  idUser:string;
+  idUser: string;
   productos: Producto[] = [];
   constructor(
     private fcfmService: FCFMServiceService,
     private router: Router,
     private productoService: ProductoService
   ) {
-    let n = localStorage.getItem('idUser')
-    if(n!=null){
-      this.idUser = n
-    }else{
-      this.idUser = ''
+    let n = localStorage.getItem('idUser');
+    if (n != null) {
+      this.idUser = n;
+    } else {
+      this.idUser = '';
     }
   }
-
+  public vendedor: Vendedor = {
+    nombre: '',
+    password: '',
+    correo: '',
+    slogan: '',
+    desripcion: '',
+  };
   ngOnInit() {
-    this.productoService.getProductos().subscribe(productos=>{
-      this.productos = productos.filter(p => p.idVendedor === this.idUser);
-    })
+    this.productoService.getProductos().subscribe((productos) => {
+      this.productos = productos.filter((p) => p.idVendedor === this.idUser);
+    });
+    this.obtenerVendedor();
   }
-
+  obtenerVendedor() {
+    if (this.idUser != null) {
+      this.productoService.getVendedor(this.idUser).subscribe((res) => {
+        this.vendedor = res;
+        this.productoService.getProductos().subscribe((productos) => {
+          console.log(res.id);
+          this.productos = productos.filter((p) => p.idVendedor == res.id);
+        });
+      });
+    }
+  }
 
   async logout() {
     await this.fcfmService.logout();
     localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('idUser')
+    localStorage.removeItem('idUser');
     this.router.navigate(['/login-vendedor']);
   }
 
@@ -44,8 +62,8 @@ export class InicioPage implements OnInit {
     await this.fcfmService.getProductos(this.productos);
   }
 
-  async eliminarProducto(producto: Producto){
+  async eliminarProducto(producto: Producto) {
     const response = await this.productoService.eliminarProducto(producto);
-    console.log(response)
+    console.log(response);
   }
 }

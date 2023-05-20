@@ -53,6 +53,7 @@ export class RegistroVendedorPage implements OnInit {
         
         await this.FCFMService.register(this.user)
           .then((response) => {
+            this.vendedor.id = response.user.uid;
             console.log('Logeado');
             this.FCFMService.altaVendedor(this.vendedor);
             console.log(response);
