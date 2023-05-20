@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import User from 'src/interfaces/User';
 import { FCFMServiceService } from '../services/fcfmservice.service';
+import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-login-vendedor',
@@ -18,11 +19,12 @@ export class LoginVendedorPage implements OnInit {
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required]],
   });
-
+  private usuario:any;
   constructor(
     private formBuilder: FormBuilder,
     private fcfmService: FCFMServiceService,
-    private router: Router
+    private router: Router, 
+    private product: ProductoService
   ) {}
 
   ngOnInit() {}
@@ -39,6 +41,9 @@ export class LoginVendedorPage implements OnInit {
             const user = userCredential.user;
             // Obtener el ID del usuario
             const userId = user.uid;
+
+            this.product.getVendedorByVendedor(this.user.email, this.user.password);
+            console.log(this.usuario)
             this.fcfmService.setUserId(userId)
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('idUser', this.fcfmService.getUserId())
@@ -46,11 +51,6 @@ export class LoginVendedorPage implements OnInit {
           })
           .catch((error) => console.log('Error: ' + error.message));
       }
-    } else {
-      this.formLogin.markAllAsTouched();
-    }
-    this.fcfmService.getLoggedInSubject().subscribe((status: boolean) => {
-      console.log(status);
-    });
+    } 
   }
 }

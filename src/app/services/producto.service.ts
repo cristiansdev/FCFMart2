@@ -4,12 +4,13 @@ import { collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
 import { Producto } from '../interfaces/producto';
 import { Vendedor } from '../interfaces/vendedor';
+import { FCFMServiceService } from './fcfmservice.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductoService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private fcfcmService: FCFMServiceService) {}
 
   getProductos(): Observable<Producto[]> {
     const productRef = collection(this.firestore, 'producto');
@@ -40,5 +41,14 @@ export class ProductoService {
   getVendedor(id: string): Observable<any> {
     const vendedorDocRef = doc(this.firestore, `vendedor/${id}`);
     return docData(vendedorDocRef, { idField: 'id' });
+  }
+  getVendedorByVendedor(email:string, password: string) {
+    this.fcfcmService.login({email, password}).then((userCredential) => {
+      const user = userCredential.user;
+      // Obtener el ID del usuario
+      const userId = user.uid;
+      localStorage.setItem('idVendedor', userId);
+    })
+    
   }
 }

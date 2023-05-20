@@ -40,9 +40,10 @@ export class ProductosPage implements OnInit {
     if(this.id!=null){
       this.productoService.getVendedor(this.id).subscribe(res=>{
         this.vendedor = res;
-        this.productoService.getProductos().subscribe(productos=>{
-          console.log(res.id)
-          this.productos = productos.filter(p=>p.idVendedor==res.id);
+        this.productoService.getVendedorByVendedor(this.vendedor.correo, this.vendedor.password);
+        this.productoService.getProductos().subscribe(productos=>{    
+          let n = localStorage.getItem('idVendedor')
+          this.productos = productos.filter(p=>p.idVendedor==n);
         })
       })
     }
