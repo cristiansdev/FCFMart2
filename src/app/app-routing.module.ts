@@ -35,13 +35,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'inicio',
-    loadChildren: () =>
-      import('./inicio/inicio.module').then((m) => m.InicioPageModule),
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },
-  {
     path: 'info-user',
     loadChildren: () =>
       import('./info-user/info-user.module').then((m) => m.InfoUserPageModule),
@@ -64,7 +57,8 @@ const routes: Routes = [
   {
     path: 'modificacion-productos',
     loadChildren: () => import('./modificacion-productos/modificacion-productos.module').then( m => m.ModificacionProductosPageModule)
-  },  {
+  },
+  {
     path: 'productos',
     loadChildren: () => import('./productos/productos.module').then( m => m.ProductosPageModule)
   },

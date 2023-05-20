@@ -3,7 +3,8 @@ ion-content {
   }
   
   ion-label {
-    font-weight: bold;
+    font-weight: bolder;
+    color: rgb(252, 109, 168);
   }
   
   ion-input {
@@ -18,15 +19,16 @@ ion-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 100%;
   }
   
   form {
-    width: 500px;
-    background-color: #f2f2f2;
+    width: 50%;
+    background-color: #ece5e5;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px rgba(248, 203, 203, 0.2);
+    margin: 8%;
   }
   
   ion-list {
@@ -37,3 +39,10 @@ ion-content {
     width: 100%;
   }
   
+  ion-title{
+    color: rgb(255, 77, 151);
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 0px;
+  }

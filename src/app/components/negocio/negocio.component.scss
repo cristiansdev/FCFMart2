@@ -1,8 +1,13 @@
 .btn-negocio{
     --background: none;
     color: rgb(255, 77, 151);
+    --background-hover:rgb(241, 53, 53);
 }
 
 .btn-negocio::after{
     box-shadow: none;
+}
+
+ion-card {
+    box-shadow: 0 2px 5px rgba(248, 7, 88, 0.3);
 }
